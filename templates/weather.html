@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if weather %}{{ weather.city }} - Погода{% else %}Погода{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="weather-container">
+    <div class="container">
+        <form method="POST" action="{{ url_for('weather') }}" class="search-form">
+            <input type="text" name="city" placeholder="Введите город" value="{{ searched_city }}" required>
+            <button type="submit">Найти</button>
+        </form>
+
+        {% if weather %}
+        <div class="weather-card">
+            <h2>{{ weather.city }}, {{ weather.country }}</h2>
+            <div class="weather-main">
+             <div class="weather-icon-section">
+                    <img src="{{ url_for('static', filename='images/' + weather.custom_icon) }}" 
+                         alt="{{ weather.description }}"
+                         class="main-weather-icon"
+                         id="main-weather-icon"
+                         onerror="this.src='{{ url_for('static', filename='images/weather/default.png') }}'">
+                </div>
+
+                <div class="weather-info">
+                    <div class="temperature">{{ weather.temperature }}°C</div>
+                    <div class="weather-description">{{ weather.description }}</div>
+                    <div class="feels-like">Ощущается как {{ weather.feels_like }}°C</div>
+                </div>
+            </div>
+            <div class="weather-desc">{{ weather.description }}</div>
+            <div class="weather-details">
+                <div>💧 Влажность: {{ weather.humidity }}%</div>
+                <div>📊 Давление: {{ weather.pressure }} hPa</div>
+                <div>💨 Ветер: {{ weather.wind_speed }} м/с</div>
+            </div>
+            <div class="update-time">Обновлено: {{ weather.timestamp }}</div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

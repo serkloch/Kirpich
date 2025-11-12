@@ -1,0 +1,54 @@
+/* Основные стили для иконок погоды */
+.main-weather-icon {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.main-weather-icon:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+}
+
+/* Секция с иконками */
+.weather-icon-section {
+    position: relative;
+    display: inline-block;
+}
+
+.temp-indicator-icon {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 32px;
+    height: 32px;
+    background: white;
+    border-radius: 50%;
+    padding: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 2px solid #e0e0e0;
+}
+
+/* Иконки деталей */
+.detail-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    opacity: 0.8;
+}
+
+.detail-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.detail-title {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
